@@ -51,7 +51,7 @@ daily_all.to_csv('data/all.csv', encoding='utf-8', index=False)
 plot_df = pd.concat({'omicrons':daily_omicrons,'all': daily_all}, axis=1)
 plot_df['omicron_share'] = plot_df['omicrons']/plot_df['all']
 
-plot_df['20211118':].to_csv('plots/omicron_pivot.csv', encoding='utf-8', index=False)
+plot_df.to_csv('plots/omicron_pivot.csv', encoding='utf-8', index=False, date_format='%s')
 #%%
 # Logit plot
 # locale.setlocale(locale.LC_ALL, 'de_DE.utf8')
