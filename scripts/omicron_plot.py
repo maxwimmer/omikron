@@ -44,14 +44,14 @@ df = df[df.reason == 'N']
 daily_omicrons = df.resample('D',on='date')['lineage'].apply(lambda x: (x == 'BA.1').sum())
 daily_all = df.resample('D',on='date')['lineage'].count()
 
-daily_omicrons.to_csv('data/omicron.csv')
-daily_all.to_csv('data/all.csv')
+daily_omicrons.to_csv('data/omicron.csv', encoding='utf-8', index=False)
+daily_all.to_csv('data/all.csv', encoding='utf-8', index=False)
 
 #%%
 plot_df = pd.concat({'omicrons':daily_omicrons,'all': daily_all}, axis=1)
 plot_df['omicron_share'] = plot_df['omicrons']/plot_df['all']
 
-plot_df.to_csv('data/omi.csv')
+plot_df.to_csv('data/omi.csv', encoding='utf-8', index=False)
 #%%
 # Logit plot
 # locale.setlocale(locale.LC_ALL, 'de_DE.utf8')
