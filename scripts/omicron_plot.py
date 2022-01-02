@@ -41,7 +41,7 @@ df = df[df.date > '2021-11-01']
 # Restrict to surveillance samples
 df = df[df.reason == 'N']
 #%%
-daily_omicrons = df.resample('D',on='date')['lineage'].apply(lambda x: (x == 'BA.1').sum())
+daily_omicrons = df.resample('D',on='date')['lineage'].apply(lambda x: (x.isin(['BA.1','BA.2','BA.3','B.1.1.529'])).sum())
 daily_all = df.resample('D',on='date')['lineage'].count()
 
 daily_omicrons.to_csv('data/omicron.csv', encoding='utf-8', index=False)
