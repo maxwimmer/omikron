@@ -1,12 +1,12 @@
 #%%
 import datetime as dt
-import locale
 
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import pandas as pd
 import seaborn as sns
+import numpy as np
 
 #%%
 df = pd.read_csv(
