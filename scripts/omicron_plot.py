@@ -114,7 +114,7 @@ def plot_omicron_share(df, reason, scale):
         )
     )
 
-    fig.savefig(f"plots/omicron_{scale}.png", dpi=300)
+    fig.savefig(f"plots/omicron_{scale}.png", dpi=150)
 
 
 #%%
