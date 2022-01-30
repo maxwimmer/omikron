@@ -63,7 +63,7 @@ def plot_omicron_share(df, reason, scale):
         df_reason = df[df.reason.isin(["N", "X"])]
 
     daily_omicrons = df_reason.resample("D", on="date")["lineage"].apply(
-        lambda x: (x == "BA.1").sum()
+        lambda x: (x.isin(['BA.1','BA.1.1','BA.2','BA.3','B.1.1.529']).sum())
     )
     daily_all = df_reason.resample("D", on="date")["lineage"].count()
 
