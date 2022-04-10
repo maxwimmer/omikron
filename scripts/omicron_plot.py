@@ -41,7 +41,7 @@ df = df[df.date > '2021-11-01']
 # Restrict to surveillance samples
 df = df[df.reason == 'N']
 #%%
-daily_omicrons = df.resample('D',on='date')['lineage'].apply(lambda x: (x.startswith("BA.1.") or x.startswith("BA.2.") or x.startswith("BA.3.") or x.startswith("BC.")).sum())
+daily_omicrons = df.resample('D',on='date')['lineage'].apply(lambda x: (x.isin(['BA.1','BA.1.1','BA.2','BA.3','B.1.1.529']).sum())
 daily_all = df.resample('D',on='date')['lineage'].count()
 
 daily_omicrons.to_csv('data/omicron.csv', encoding='utf-8', index=False)
@@ -63,7 +63,7 @@ def plot_omicron_share(df, reason, scale):
         df_reason = df[df.reason.isin(["N", "X"])]
 
     daily_omicrons = df_reason.resample("D", on="date")["lineage"].apply(
-        lambda x: (x.startswith("BA.1.") or x.startswith("BA.2.") or  x.startswith("BA.3.") or x.startswith("BC.")).sum()
+        lambda x: (x.isin(['BA.1','BA.1.1','BA.2','BA.3','B.1.1.529']).sum()
     )
     daily_all = df_reason.resample("D", on="date")["lineage"].count()
 
